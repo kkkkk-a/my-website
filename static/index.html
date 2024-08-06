@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>情報保存</title>
+    <script>
+        function sendData() {
+            // 保存する情報
+            const data = { info: "これは保存する情報です" };
+
+            // サーバーにデータを POST する
+            fetch('/save', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.text())
+            .then(result => {
+                console.log(result); // サーバーからのレスポンス
+            });
+        }
+    </script>
+</head>
+<body>
+    <button onclick="sendData()">情報を保存する</button>
+</body>
+</html>
